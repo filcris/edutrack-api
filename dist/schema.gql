@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Course {
+  code: String!
+  description: String
+  id: ID!
+  title: String!
+}
+
+type CoursePage {
+  data: [Course!]!
+  pagination: PageInfoCourse!
+}
+
+type Enrollment {
+  course: Course!
+  id: ID!
+  student: Student!
+}
+
+type LoginResponse {
+  access_token: String!
+}
+
+type Me {
+  email: String!
+  role: String!
+}
+
+type Mutation {
+  createCourse(code: String!, description: String, title: String!): Course!
+  createStudent(email: String!, name: String!): Student!
+  enroll(courseId: String!, studentId: String!): Enrollment!
+  login(email: String!, password: String!): LoginResponse!
+  register(email: String!, password: String!, role: String = "user"): Me!
+}
+
+type PageInfo {
+  skip: Int!
+  take: Int!
+  total: Int!
+}
+
+type PageInfoCourse {
+  skip: Int!
+  take: Int!
+  total: Int!
+}
+
+type Query {
+  courses: [Course!]!
+  coursesPage(search: String, skip: Int! = 0, take: Int! = 20): CoursePage!
+  enrollments: [Enrollment!]!
+  me: Me!
+  students: [Student!]!
+  studentsPage(search: String, skip: Int! = 0, take: Int! = 20): StudentPage!
+}
+
+type Student {
+  email: String!
+  id: ID!
+  name: String!
+}
+
+type StudentPage {
+  data: [Student!]!
+  pagination: PageInfo!
+}

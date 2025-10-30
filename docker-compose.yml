@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: edutrack
+    ports:
+      - "5432:5432"
+    volumes:
+      - edutrack_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d edutrack"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  prisma-studio:
+    image: node:20
+    working_dir: /app
+    command: sh -c "npm i -g prisma && prisma studio --browser none"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/edutrack?schema=public
+    depends_on:
+      - db
+    ports:
+      - "5555:5555"
+volumes:
+  edutrack_pg:
