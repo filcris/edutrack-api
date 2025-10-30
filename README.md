@@ -98,24 +98,3 @@ Cristina
 
 Projeto desenvolvido no âmbito do EduTrack v3, com NestJS, Prisma, GraphQL e JWT, para gestão académica moderna e escalável.
 
-yaml
-Copiar código
-
----
-
-### 💡 O que este README já tem:
-✅ Badges (NestJS, GraphQL, Prisma, TS, Build Passing)  
-✅ Instruções passo a passo (instalação, seed, run)  
-✅ Credenciais padrão  
-✅ Endpoints Swagger + GraphQL  
-✅ Estrutura da API  
-✅ Exemplo de uso (login e query)  
-✅ Secção de autor  
-
----
-
-👉 Agora é só fazer:
-```powershell
-git add README.md
-git commit -m "docs: add professional README with badges"
-git push
