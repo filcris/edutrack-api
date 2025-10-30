@@ -49,3 +49,4 @@ model Enrollment {
 
   @@unique([studentId, courseId])
 }
+
